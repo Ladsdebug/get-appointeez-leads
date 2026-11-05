@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Appointeez Leads - AI Lead Response for U.S. Debt Settlement Firms</title>
+<meta name="description" content="Appointeez answers new debt settlement enquiries in seconds with AI-driven SMS and chat follow-up, so no lead goes cold.">
+<style>
+  :root{
+    --navy:#0B0E1B;
+    --navy-2:#121633;
+    --panel:#151A33;
+    --gold:#D3A059;
+    --gold-2:#E8C184;
+    --ink:#F4F1EA;
+    --ink-dim:#B9BBCC;
+    --line:rgba(211,160,89,0.25);
+    --good:#8FD6A8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    text-wrap:balance;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  a{color:var(--gold-2)}
+  :focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    padding:14px 26px;border-radius:8px;font-weight:700;font-size:15px;
+    text-decoration:none;border:1px solid transparent;cursor:pointer;
+    font-family:inherit;transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#1b1304}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--line)}
+
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,14,27,0.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  .brand{display:flex;flex-direction:column;line-height:1.1}
+  .brand .name{font-family:Georgia,serif;font-weight:700;font-size:19px;color:var(--gold-2)}
+  .brand .tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim)}
+  .nav-actions{display:flex;gap:10px}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold-2);border:1px solid var(--line);padding:6px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(30px,4.2vw,46px);max-width:17ch}
+  .hero p.lede{font-size:18px;color:var(--ink-dim);max-width:60ch;margin:0 0 22px}
+  .hero .price-line{font-size:17px;color:var(--ink);margin:0 0 26px}
+  .hero .price-line b{color:var(--gold-2);font-variant-numeric:tabular-nums}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .lock-note{font-size:13px;color:var(--ink-dim)}
+
+  .snapshot{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:24px;width:100%;max-width:460px;justify-self:end;
+  }
+  .snapshot h3{font-size:15px;margin-bottom:16px;color:var(--gold-2);font-family:inherit}
+  .snapshot ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .snapshot li{display:flex;justify-content:space-between;align-items:center;font-size:14px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+  .snapshot li:last-child{border-bottom:none;padding-bottom:0}
+  .snapshot .ok{color:var(--good);font-weight:700;font-size:13px}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(24px,3vw,32px);margin-bottom:10px}
+  section .section-lede{color:var(--ink-dim);max-width:60ch;margin-bottom:36px}
+
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .calc .controls{display:grid;gap:22px}
+  .calc label{display:block;font-size:13px;color:var(--ink-dim);margin-bottom:8px}
+  .calc .valline{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+  .calc .valline b{color:var(--gold-2);font-variant-numeric:tabular-nums}
+  .calc input[type=range]{width:100%;accent-color:var(--gold)}
+  .calc .outputs{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;gap:18px}
+  .calc .out-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:14px}
+  .calc .out-row:last-child{border-bottom:none;padding-bottom:0}
+  .calc .out-row .label{color:var(--ink-dim);font-size:14px}
+  .calc .out-row .value{font-size:22px;font-weight:700;color:var(--gold-2);font-variant-numeric:tabular-nums}
+  .calc .fine-print{font-size:12px;color:var(--ink-dim);margin-top:4px}
+
+  table.compare{width:100%;border-collapse:collapse;min-width:520px}
+  .table-scroll{overflow-x:auto}
+  table.compare th,table.compare td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}
+  table.compare thead th{color:var(--ink-dim);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+  table.compare td.highlight,table.compare th.highlight{background:rgba(211,160,89,0.08);color:var(--gold-2);font-weight:700}
+
+  .faq-item{border-bottom:1px solid var(--line);padding:20px 0}
+  .faq-item:first-child{padding-top:0}
+  .faq-item:last-child{border-bottom:none}
+  .faq-item h3{font-size:17px;margin-bottom:8px;font-family:inherit}
+  .faq-item p{color:var(--ink-dim);margin:0}
+
+  .pilot-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+  .pilot-intro .kicker{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);font-weight:700;margin-bottom:14px}
+  .pilot-intro h2{font-size:clamp(24px,3vw,32px)}
+  .pilot-intro .section-lede{margin-bottom:28px}
+
+  .pilot-form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:36px}
+  .pilot-form .field{margin-bottom:18px}
+  .pilot-form label{display:block;font-size:13px;color:var(--ink-dim);margin-bottom:6px}
+  .pilot-form input,.pilot-form select{
+    width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--line);
+    background:#0E1226;color:var(--ink);font-size:15px;font-family:inherit;
+  }
+  .pilot-form input:focus,.pilot-form select:focus{outline:2px solid var(--gold-2);outline-offset:2px}
+  .pilot-form .form-note{font-size:13px;color:var(--ink-dim);margin:14px 0 0}
+
+  footer{padding:40px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--ink-dim);font-size:13px}
+
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr}
+    .snapshot{justify-self:stretch;max-width:460px;margin-top:40px}
+    .pilot-grid{grid-template-columns:1fr;gap:32px}
+  }
+  @media(max-width:820px){
+    .calc{grid-template-columns:1fr}
+    table.compare{min-width:0}
+    .table-scroll{overflow-x:visible}
+    table.compare thead{display:none}
+    table.compare, table.compare tbody, table.compare tr, table.compare th, table.compare td{display:block;width:100%}
+    table.compare tr{border:1px solid var(--line);border-radius:10px;margin-bottom:12px;padding:6px 0;background:var(--panel)}
+    table.compare th[scope="row"]{border-bottom:1px solid var(--line);font-size:13px;color:var(--gold-2);text-transform:uppercase;letter-spacing:.05em;padding:10px 16px}
+    table.compare td{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding:10px 16px}
+    table.compare td:last-child{border-bottom:none}
+    table.compare td::before{content:attr(data-label);color:var(--ink-dim);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+    table.compare td.highlight{border-radius:0 0 8px 8px}
+  }
+  @media(max-width:600px){
+    header .wrap{flex-wrap:wrap;gap:10px;padding:14px 16px}
+    .nav-actions{width:100%;gap:8px}
+    .nav-actions .btn{flex:1;padding:10px 14px;font-size:13px}
+  }
+  @media(max-width:480px){
+    .wrap{padding:0 16px}
+    .hero{padding:40px 0 36px}
+    .hero h1{font-size:clamp(26px,7vw,32px)}
+    .hero .cta-row{flex-direction:column}
+    .hero .cta-row .btn{width:100%}
+    .snapshot{padding:20px}
+    .pilot-form{padding:22px}
+    footer .wrap{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <span class="name">Get Appointeez Leads</span>
+      <span class="tag">Stop losing deals to slow follow-up</span>
+    </div>
+    <div class="nav-actions">
+      <a href="#demo" class="btn btn-outline">Request a Demo</a>
+      <a href="mailto:hello@getappointeezleads.com" class="btn btn-gold">Email Us</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <span class="eyebrow">AI Lead Response &middot; U.S. Debt Settlement Firms</span>
+        <h1>Stop losing deals to slow follow-up. Get Appointeez Leads.</h1>
+        <p class="lede">Appointeez answers every new enquiry in seconds with AI-driven SMS and chat follow-up, so no debt settlement lead goes cold while your team is busy closing someone else.</p>
+        <p class="price-line">No rigid onboarding - Appointeez layers onto your existing intake flow instead of replacing it.</p>
+        <div class="cta-row">
+          <a href="#demo" class="btn btn-gold">Request a Demo</a>
+          <a href="mailto:hello@getappointeezleads.com" class="btn btn-outline">Email Us Instead</a>
+        </div>
+        <p class="lock-note">No long-term contract to start. See it on a short pilot before deciding anything.</p>
+      </div>
+
+      <div class="snapshot">
+        <h3>What Appointeez handles on every lead</h3>
+        <ul>
+          <li>First reply <span class="ok">Under 60 sec</span></li>
+          <li>Coverage <span class="ok">24/7</span></li>
+          <li>Channel <span class="ok">SMS + Chat</span></li>
+          <li>Follow-up cadence <span class="ok">Automatic</span></li>
+          <li>CRM sync <span class="ok">Every conversation</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>See the upside before you commit</h2>
+    <p class="section-lede">Adjust the sliders to match your own numbers. The "uplift" assumption is yours to set - we'd rather you test it on your own leads than take our word for it.</p>
+    <div class="calc">
+      <div class="controls">
+        <div>
+          <div class="valline"><span>Leads per month</span><b id="leadsOut">120</b></div>
+          <input type="range" id="leads" min="10" max="500" step="10" value="120">
+        </div>
+        <div>
+          <div class="valline"><span>Current close rate</span><b id="rateOut">15%</b></div>
+          <input type="range" id="rate" min="5" max="50" step="1" value="15">
+        </div>
+        <div>
+          <div class="valline"><span>Average deal value</span><b id="dealValueOut">$2,200</b></div>
+          <input type="range" id="dealValue" min="500" max="6000" step="100" value="2200">
+        </div>
+        <div>
+          <div class="valline"><span>Close-rate lift from instant response</span><b id="upliftOut">20%</b></div>
+          <input type="range" id="uplift" min="0" max="50" step="5" value="20">
+        </div>
+      </div>
+      <div class="outputs">
+        <div class="out-row"><span class="label">Deals won today</span><span class="value" id="dealsNowOut">18</span></div>
+        <div class="out-row"><span class="label">Deals won with Appointeez</span><span class="value" id="dealsNewOut">22</span></div>
+        <div class="out-row"><span class="label">Extra revenue / month</span><span class="value" id="extraRevOut">$2,200</span></div>
+      </div>
+    </div>
+    <p class="calc fine-print">Illustrative only - the uplift slider is an assumption you control, not a guaranteed result.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How we compare</h2>
+    <p class="section-lede">Most "new lead" notifications just sit in an inbox until someone has a free minute. By then the lead has usually called the next firm on their list.</p>
+    <div class="table-scroll">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">Manual follow-up</th>
+            <th scope="col">Basic autoresponder</th>
+            <th scope="col" class="highlight">Appointeez</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" data-label="">Response time</th>
+            <td data-label="Manual follow-up">Hours, if the same day</td>
+            <td data-label="Basic autoresponder">Minutes, one generic message</td>
+            <td data-label="Appointeez" class="highlight">Under 60 seconds, every time</td>
+          </tr>
+          <tr>
+            <th scope="row" data-label="">Coverage</th>
+            <td data-label="Manual follow-up">Business hours only</td>
+            <td data-label="Basic autoresponder">Business hours only</td>
+            <td data-label="Appointeez" class="highlight">24/7, including weekends</td>
+          </tr>
+          <tr>
+            <th scope="row" data-label="">Personalisation</th>
+            <td data-label="Manual follow-up">Depends who picks it up</td>
+            <td data-label="Basic autoresponder">Same template for everyone</td>
+            <td data-label="Appointeez" class="highlight">Context-aware, per lead</td>
+          </tr>
+          <tr>
+            <th scope="row" data-label="">Where it's logged</th>
+            <td data-label="Manual follow-up">Scattered notes, if any</td>
+            <td data-label="Basic autoresponder">Not synced anywhere</td>
+            <td data-label="Appointeez" class="highlight">Full history in your CRM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>What does Appointeez actually do when a new lead comes in?</h3>
+      <p>It replies within a minute by SMS or chat, asks the qualifying questions you'd normally ask yourself, and hands your team a warm, pre-qualified conversation instead of a cold form fill.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does it replace my sales team?</h3>
+      <p>No. It handles the first reply and qualification so a lead never goes cold while your team is busy, then hands the conversation to a person at the right moment.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can it connect to the CRM or dialer we already use?</h3>
+      <p>Yes - conversations and lead details sync back into the CRM or dialer you already run, so nothing lives in a separate system.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a minimum contract?</h3>
+      <p>We start with a short demo on your own lead flow before any commitment, so you can see it working before you decide anything.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demo" style="border-bottom:none">
+  <div class="wrap">
+    <div class="pilot-grid">
+      <div class="pilot-intro">
+        <span class="kicker">Request a Demo</span>
+        <h2>See Appointeez on your own leads</h2>
+        <p class="section-lede">Tell us a bit about how leads reach you today, and we'll show you what instant response looks like for debt settlement firms.</p>
+        <a href="mailto:hello@getappointeezleads.com" class="btn btn-outline">Email Us Instead</a>
+      </div>
+
+      <form class="pilot-form" id="demoForm">
+        <div class="field">
+          <label for="company">Company name</label>
+          <input id="company" type="text" required>
+        </div>
+        <div class="field">
+          <label for="email">Work email</label>
+          <input id="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="website">Company website</label>
+          <input id="website" type="text" placeholder="e.g. yourcompany.com">
+        </div>
+        <div class="field">
+          <label for="leadVolume">Monthly lead volume</label>
+          <input id="leadVolume" type="text" placeholder="e.g. 100-200 leads/month">
+        </div>
+        <div class="field">
+          <label for="niche">Industry / niche</label>
+          <input id="niche" type="text" value="Debt Settlement">
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%">Request a Demo</button>
+        <p class="form-note">Submitting sends your request to our team for scheduling. Nothing is shared with a CRM yet - a team member will follow up directly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>getappointeezleads.com - Get Appointeez Leads</div>
+    <div>Questions? Email <a href="mailto:hello@getappointeezleads.com">hello@getappointeezleads.com</a></div>
+  </div>
+</footer>
+
+<script>
+  const DEAL_DEFAULT = 2200;
+  const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+
+  const leadsEl = document.getElementById('leads');
+  const rateEl = document.getElementById('rate');
+  const dealValueEl = document.getElementById('dealValue');
+  const upliftEl = document.getElementById('uplift');
+
+  const leadsOut = document.getElementById('leadsOut');
+  const rateOut = document.getElementById('rateOut');
+  const dealValueOut = document.getElementById('dealValueOut');
+  const upliftOut = document.getElementById('upliftOut');
+  const dealsNowOut = document.getElementById('dealsNowOut');
+  const dealsNewOut = document.getElementById('dealsNewOut');
+  const extraRevOut = document.getElementById('extraRevOut');
+
+  function recalc(){
+    const leads = parseInt(leadsEl.value, 10);
+    const rate = parseInt(rateEl.value, 10);
+    const dealValue = parseInt(dealValueEl.value, 10);
+    const uplift = parseInt(upliftEl.value, 10);
+
+    leadsOut.textContent = leads;
+    rateOut.textContent = rate + '%';
+    dealValueOut.textContent = fmt(dealValue);
+    upliftOut.textContent = uplift + '%';
+
+    const dealsNow = Math.round(leads * (rate / 100));
+    const newRate = rate * (1 + uplift / 100);
+    const dealsNew = Math.round(leads * (newRate / 100));
+    const extraRev = (dealsNew - dealsNow) * dealValue;
+
+    dealsNowOut.textContent = dealsNow;
+    dealsNewOut.textContent = dealsNew;
+    extraRevOut.textContent = fmt(extraRev);
+  }
+
+  [leadsEl, rateEl, dealValueEl, upliftEl].forEach(el => el.addEventListener('input', recalc));
+  recalc();
+</script>
+
+<script>
+  (function(){
+    // TODO: once a GHL/ACA pipeline + inbound webhook exists for Get Appointeez Leads demo requests,
+    // set WEBHOOK_URL below and switch this back to a fetch() call, same pattern as the
+    // debt bridge pilot form. Left disconnected for now per instruction - form just
+    // confirms locally and does not send data anywhere yet.
+    const WEBHOOK_URL = null;
+    const form = document.getElementById('demoForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
+
+      const params = new URLSearchParams({
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        website: document.getElementById('website').value.trim(),
+        leadVolume: document.getElementById('leadVolume').value.trim(),
+        niche: document.getElementById('niche').value.trim(),
+        source: 'Demo Form - getappointeezleads.com'
+      });
+
+      function finish(){
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+        alert('Thanks - we will be in touch within one business day.');
+        form.reset();
+      }
+
+      if (WEBHOOK_URL) {
+        fetch(WEBHOOK_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
+          .then(finish)
+          .catch(finish);
+      } else {
+        finish();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
